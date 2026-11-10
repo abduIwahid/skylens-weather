@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyLens Weather — Open-Meteo</title>
+<meta name="description" content="City weather search with current conditions, 24-hour and 7-day forecasts from Open-Meteo. No API key, vanilla JavaScript.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>SkyLens Weather</h1>
+    <p class="tagline">Search any city on Earth. Live forecasts from Open-Meteo — no API key, no tracking.</p>
+  </div>
+</header>
+
+<div id="offline-banner" class="offline-banner" role="alert" hidden>
+  You are offline. Search and forecasts need a connection; your recent cities are still listed below.
+</div>
+
+<main class="wrap">
+  <section class="search-panel" aria-label="City search">
+    <label for="city-input">Search for a city</label>
+    <div class="search-row">
+      <div class="suggest-wrap">
+        <input id="city-input" type="text" placeholder="e.g. Attock, London, Tokyo" autocomplete="off" aria-describedby="search-hint">
+        <ul id="suggestions" class="suggestions" hidden></ul>
+      </div>
+      <button id="locate-btn" class="btn btn-secondary" type="button">Use my location</button>
+      <div class="unit-toggle" role="group" aria-label="Temperature unit">
+        <button id="unit-c" class="btn btn-unit" type="button" aria-pressed="true">°C</button>
+        <button id="unit-f" class="btn btn-unit" type="button" aria-pressed="false">°F</button>
+      </div>
+    </div>
+    <p id="search-hint" class="hint">Start typing — suggestions appear after a short pause. Pick one to load its forecast.</p>
+    <div id="recent-block" hidden>
+      <span class="recent-label">Recent:</span>
+      <span id="recent-chips" class="chip-row"></span>
+    </div>
+  </section>
+
+  <section aria-label="Forecast">
+    <div id="status-region" class="status-region" role="status" aria-live="polite"></div>
+    <div id="forecast-region"></div>
+    <div id="empty-state" class="state-box" hidden>
+      <h2>No city found</h2>
+      <p>Open-Meteo's geocoding returned no matches for that search. Try a different spelling or a nearby larger city.</p>
+    </div>
+    <div id="error-state" class="state-box state-error" hidden>
+      <h2>Something went wrong</h2>
+      <p id="error-text">The request failed.</p>
+      <button id="error-retry" class="btn" type="button">Try again</button>
+    </div>
+    <div id="start-state" class="state-box">
+      <h2>No forecast loaded yet</h2>
+      <p>Search for a city above, or use your location, to see current conditions, the next 24 hours and the 7-day outlook.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><a href="https://open-meteo.com" target="_blank" rel="noopener">Weather data by Open-Meteo.com</a> — free tier, non-commercial use. Forecasts update from the Open-Meteo forecast API.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

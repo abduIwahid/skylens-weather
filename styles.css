@@ -1,0 +1,97 @@
+/* SkyLens Weather — design tokens
+   Base: deep slate ink on paper white. One accent: weather amber #D97706.
+   Solid colours only. */
+:root {
+  --bg: #F7F6F2;
+  --surface: #FFFFFF;
+  --surface-alt: #EFECE3;
+  --ink: #17222B;
+  --ink-soft: #223140;
+  --text: #1C1C1C;
+  --text-on-ink: #F5F2E9;
+  --text-muted: #5C5A52;
+  --border: #D8D3C3;
+  --accent: #D97706;
+  --accent-dark: #9A5203;
+  --danger: #B3261E;
+  --danger-soft: #FBEAEA;
+  --focus: #1A56C4;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(23, 34, 43, 0.14);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 1.5; }
+.wrap { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 16px; }
+a { color: var(--accent-dark); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.site-header { background: var(--ink); color: var(--text-on-ink); padding: 28px 0; }
+.site-header h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 2.4rem); }
+.tagline { margin: 6px 0 0; color: #CFC9B8; }
+
+.offline-banner { background: #FFF4D6; color: #5C4500; border-bottom: 2px solid #E0B400; padding: 10px 16px; text-align: center; font-weight: 600; }
+.state-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 20px; text-align: center; margin: 18px 0; }
+.state-box h2 { margin-top: 0; }
+.state-error { border-color: var(--danger); background: var(--danger-soft); }
+.status-region { min-height: 1.5em; color: var(--text-muted); margin: 12px 0 2px; }
+
+.search-panel { padding: 20px 0 6px; }
+.search-panel label { font-weight: 700; display: block; margin-bottom: 8px; }
+.search-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+.suggest-wrap { position: relative; flex: 1 1 240px; }
+.suggest-wrap input { width: 100%; padding: 11px 12px; font-size: 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text); }
+.suggestions { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); list-style: none; margin: 0; padding: 4px; z-index: 10; box-shadow: var(--shadow); max-height: 280px; overflow-y: auto; }
+.suggestions li { margin: 0; }
+.suggestions button { width: 100%; text-align: left; background: none; border: none; padding: 9px 10px; cursor: pointer; font: inherit; color: inherit; border-radius: 6px; }
+.suggestions button:hover, .suggestions button:focus-visible { background: var(--surface-alt); }
+.suggestions .sub { color: var(--text-muted); font-size: 0.88rem; }
+.btn { background: var(--accent); color: #FFFFFF; border: 1px solid var(--accent); padding: 11px 16px; border-radius: var(--radius); font-size: 1rem; cursor: pointer; font-weight: 600; }
+.btn:hover { background: var(--accent-dark); }
+.btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn-secondary:hover { background: var(--surface-alt); }
+.unit-toggle { display: flex; }
+.btn-unit { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 0; padding: 11px 14px; }
+.btn-unit:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.btn-unit:last-child { border-radius: 0 var(--radius) var(--radius) 0; border-left: none; }
+.btn-unit[aria-pressed="true"] { background: var(--ink); color: var(--text-on-ink); border-color: var(--ink); }
+.hint { color: var(--text-muted); font-size: 0.92rem; margin: 8px 0 0; }
+#recent-block { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.recent-label { font-weight: 700; }
+.chip-row { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: 6px 14px; cursor: pointer; font: inherit; font-size: 0.9rem; color: var(--text); }
+.chip:hover { border-color: var(--accent); }
+
+.current-card { background: var(--ink); color: var(--text-on-ink); border-radius: 14px; padding: 24px; margin: 14px 0; }
+.current-card h2 { margin: 0; font-size: 1.35rem; }
+.current-card .place-sub { color: #CFC9B8; margin: 2px 0 0; }
+.current-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; margin-top: 10px; }
+.current-temp { font-size: clamp(2.6rem, 9vw, 4rem); font-weight: 700; line-height: 1; }
+.current-cond { font-size: 1.15rem; font-weight: 600; }
+.current-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 14px; color: #E5E0D0; }
+.current-meta b { color: #FFFFFF; }
+
+.section-title { margin: 22px 0 10px; font-size: 1.1rem; }
+.hourly-strip { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.hour-cell { flex: 0 0 76px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 6px; text-align: center; }
+.hour-cell .h { color: var(--text-muted); font-size: 0.85rem; display: block; }
+.hour-cell .t { font-weight: 700; font-size: 1.05rem; display: block; margin: 4px 0; }
+.hour-cell .c { font-size: 0.75rem; color: var(--text-muted); display: block; }
+.daily-list { list-style: none; margin: 0; padding: 0; }
+.daily-row { display: grid; grid-template-columns: 118px 1fr auto; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px 14px; margin-bottom: 8px; }
+.daily-row .day { font-weight: 700; }
+.daily-row .cond { color: var(--text-muted); }
+.daily-row .range { font-weight: 700; white-space: nowrap; }
+.daily-row .range .lo { color: var(--text-muted); font-weight: 400; }
+
+.skeleton-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 14px 0; }
+.skel { background: var(--surface-alt); border-radius: 6px; }
+.skel-title { height: 26px; width: 45%; }
+.skel-temp { height: 58px; width: 160px; margin-top: 14px; }
+.skel-line { height: 15px; width: 70%; margin-top: 14px; }
+
+.site-footer { border-top: 1px solid var(--border); padding: 18px 0 26px; color: var(--text-muted); font-size: 0.92rem; margin-top: 26px; }
+@media (max-width: 480px) {
+  .daily-row { grid-template-columns: 92px 1fr auto; }
+  .current-card { padding: 18px 14px; }
+}
