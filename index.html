@@ -59,6 +59,13 @@
   </section>
 </main>
 
+<section class="wrap about-panel" aria-label="About this project">
+  <h2>About this project</h2>
+  <p>Every weather app tutorial fetches one endpoint and prints the temperature. The part they skip is the part that actually breaks: the forecast call cannot even be constructed until a separate geocoding call turns "Attock" into coordinates, and by the time it answers, the user may already be typing a different city. SkyLens is my study of that dependent-request problem — debounced suggestions, cancellation of stale calls, and both responses normalised through one mapper before anything touches the screen. Open-Meteo needs no API key at all, which still feels like a small miracle.</p>
+  <p>Part of a series of small, dependency-free apps I built against free public APIs to practise working within real rate limits and payload shapes.</p>
+  <p class="about-sign">— <a href="https://github.com/abduIwahid" target="_blank" rel="noopener">Abdul Wahid</a> · BS Artificial Intelligence, COMSATS University Islamabad (Attock Campus) · <a href="https://www.abdulwahid.me" target="_blank" rel="noopener">abdulwahid.me</a></p>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <p><a href="https://open-meteo.com" target="_blank" rel="noopener">Weather data by Open-Meteo.com</a> — free tier, non-commercial use. Forecasts update from the Open-Meteo forecast API.</p>

@@ -1,5 +1,8 @@
 # SkyLens Weather
 
+> Built by [Abdul Wahid](https://github.com/abduIwahid) — BS Artificial Intelligence student at COMSATS University Islamabad (Attock Campus). One of a series of dependency-free apps I built against free public APIs to practise real-world API constraints: rate limits, caching, and payload normalisation. More at [abdulwahid.me](https://www.abdulwahid.me).
+
+
 A keyless weather app on Open-Meteo: search any city, get current conditions, the next 24 hours and a 7-day forecast. The interesting part is the request choreography — a geocoding call must resolve a city to coordinates before the forecast call can exist, and both are debounced, cancellable and normalised through a mapper.
 
 **Live demo:** _TBD — deploy pending owner decision (GitHub Pages or Vercel static)._
@@ -10,7 +13,7 @@ Run it locally: open `index.html` in a browser, or `python3 -m http.server` in t
 - **City search with suggestions** — debounced geocoding with a dropdown; picking a result triggers the dependent forecast request.
 - **Current conditions card** — temperature, feels-like, humidity, wind, and the WMO condition label.
 - **Next 24 hours** — hourly strip zipped from Open-Meteo's parallel arrays, starting at the current hour in the city's own timezone (`timezone=auto`).
-- **7-day forecast** — condition, low and high per day.
+- **7-day forecast** — condition, low and high per day, plus the day's rain probability (from Open-Meteo's `precipitation_probability_max`).
 - **°C / °F toggle** — instant, recomputed from the cached metric response. No refetch.
 - **Use my location** — Geolocation API → forecast directly, labelled "Current location".
 - **Recent searches** — last 5 cities in localStorage, one click to reload.

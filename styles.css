@@ -78,7 +78,7 @@ a { color: var(--accent-dark); }
 .hour-cell .t { font-weight: 700; font-size: 1.05rem; display: block; margin: 4px 0; }
 .hour-cell .c { font-size: 0.75rem; color: var(--text-muted); display: block; }
 .daily-list { list-style: none; margin: 0; padding: 0; }
-.daily-row { display: grid; grid-template-columns: 118px 1fr auto; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px 14px; margin-bottom: 8px; }
+.daily-row { display: grid; grid-template-columns: 118px 1fr auto auto; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px 14px; margin-bottom: 8px; }
 .daily-row .day { font-weight: 700; }
 .daily-row .cond { color: var(--text-muted); }
 .daily-row .range { font-weight: 700; white-space: nowrap; }
@@ -95,3 +95,8 @@ a { color: var(--accent-dark); }
   .daily-row { grid-template-columns: 92px 1fr auto; }
   .current-card { padding: 18px 14px; }
 }
+
+.daily-row .rain { color: var(--accent-dark); font-weight: 600; font-size: 0.88rem; }
+.about-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; margin: 26px auto 0; box-sizing: border-box; width: calc(100% - 32px); }
+.about-panel h2 { margin-top: 0; }
+.about-sign { color: var(--text-muted); margin-bottom: 0; }
