@@ -85,6 +85,7 @@ function mapForecast(raw) {
     code: raw.daily.weather_code[i],
     maxC: raw.daily.temperature_2m_max[i],
     minC: raw.daily.temperature_2m_min[i],
+    rainPct: raw.daily.precipitation_probability_max ? raw.daily.precipitation_probability_max[i] : null,
   }));
   return {
     timezone: raw.timezone,
@@ -172,7 +173,7 @@ async function selectPlace(place, saveRecent) {
       '?latitude=' + place.latitude + '&longitude=' + place.longitude +
       '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m' +
       '&hourly=temperature_2m' +
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
       '&timezone=auto';
     const raw = await fetchJson(url, forecastController.signal);
     state.forecast = mapForecast(raw);
@@ -252,7 +253,8 @@ function renderForecast() {
   const daysHtml = f.days.map((d) =>
     '<li class="daily-row"><span class="day">' + dayLabel(d.date) + '</span>' +
     '<span class="cond">' + esc(wmoLabel(d.code)) + '</span>' +
-    '<span class="range"><span class="lo">' + temp(d.minC) + '</span> / ' + temp(d.maxC) + '</span></li>').join('');
+    '<span class="range"><span class="lo">' + temp(d.minC) + '</span> / ' + temp(d.maxC) + '</span>' +
+    (d.rainPct != null ? '<span class="rain">Rain ' + Math.round(d.rainPct) + '%</span>' : '') + '</li>').join('');
   el.forecast.innerHTML =
     '<article class="current-card">' +
     '<h2>' + esc(p.name) + '</h2>' +

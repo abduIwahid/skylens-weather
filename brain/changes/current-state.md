@@ -7,3 +7,4 @@
 **Verified:** app.js syntax (node --check); mapper fields against live Open-Meteo (geocoding Attock, forecast shape, empty-result shape).
 
 **Pending:** GitHub repo creation + deploy (owner decision: GitHub Pages vs Vercel); README demo GIF after deploy; Phase 2 level-ups (air-quality tab, two-city compare).
+- 2026-11-10 (later): Rain probability in the 7-day list + first-person About shipped. Next: hosting choice (Pages vs Vercel) still open; air-quality panel remains a Phase 2 candidate.
